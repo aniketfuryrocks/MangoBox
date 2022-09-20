@@ -1,10 +1,10 @@
 use std::thread;
 use std::time::Duration;
 
-mod term;
+mod app;
 
 fn main() -> anyhow::Result<()> {
-    let mut terminal = term::Term::new()?;
+    let mut terminal = app::App::new()?;
 
     // draw tui
     terminal.draw()?;

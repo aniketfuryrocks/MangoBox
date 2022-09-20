@@ -10,11 +10,9 @@ use tui::{
     Terminal,
 };
 
-//pub type Result<T> = std::result::Result<T, io::Error>;
+pub struct App(Terminal<CrosstermBackend<Stdout>>);
 
-pub struct Term(Terminal<CrosstermBackend<Stdout>>);
-
-impl Term {
+impl App {
     pub fn new() -> anyhow::Result<Self> {
         enable_raw_mode()?;
         let mut stdout = io::stdout();
