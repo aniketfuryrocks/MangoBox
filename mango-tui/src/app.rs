@@ -13,9 +13,13 @@ use crate::layouts;
 
 pub type AppBackend = CrosstermBackend<Stdout>;
 
+#[derive(Default)]
+pub struct AppState {}
+
 pub struct App {
     terminal: Terminal<AppBackend>,
     should_quit: bool,
+    state: AppState,
 }
 
 impl App {
@@ -29,12 +33,14 @@ impl App {
         Ok(Self {
             terminal,
             should_quit: false,
+            state: AppState::default(),
         })
     }
 
     #[inline]
     pub fn draw(&mut self) -> anyhow::Result<()> {
-        self.terminal.draw(layouts::dashboard::draw)?;
+        self.terminal
+            .draw(|frame| layouts::dashboard::draw(frame, &self.state))?;
 
         Ok(())
     }
