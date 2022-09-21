@@ -1,6 +1,8 @@
-use tui::layout::{Constraint, Direction, Layout};
-use tui::widgets::{Block, Borders};
-use tui::Frame;
+use tui::{
+    layout::{Constraint, Direction, Layout},
+    widgets::{Block, Borders},
+    Frame,
+};
 
 use crate::app::{AppBackend, AppState};
 
