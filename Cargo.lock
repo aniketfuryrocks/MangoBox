@@ -7,9 +7,5 @@ name = "mango-api"
 version = "0.1.0"
 
 [[package]]
-name = "mango-tui"
-version = "0.1.0"
-
-[[package]]
-name = "mangod"
+name = "mango-chat-server"
 version = "0.1.0"
