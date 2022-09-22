@@ -1,0 +1,25 @@
+body {
+    background: #f1f5f9;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+.wrapper {
+    width: 350px;
+    text-align: center;
+    height: 120px;
+}
+
+.button_style {
+    width: 200px;
+    outline: none;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 15px;
+    background: #facc15;
+    cursor: pointer;
+}
