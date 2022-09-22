@@ -7,9 +7,7 @@
         "service_worker": "background.js"
     },
     "permissions": [
-        "storage",
-        "activeTab",
-        "scripting"
+        "tabs"
     ],
     "options_page": "options.html",
     "action": {
