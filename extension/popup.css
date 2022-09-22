@@ -9,7 +9,11 @@ h2 {
 .wrapper {
     width: 350px;
     text-align: center;
-    height: 120px;
+    height: 150px;
+}
+
+input::placeholder {
+    text-align: center;
 }
 
 .button_style {
@@ -17,9 +21,23 @@ h2 {
     outline: none;
     height: 30px;
     border: none;
+    color: #f1f5f9;
     border-radius: 5px;
     padding: 5px;
     margin-top: 15px;
     background: #facc15;
     cursor: pointer;
+}
+
+.textbox {
+    margin-top: 20px;
+
+    background: white;
+    border: 1px solid #ffa853;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 3px #ffa853;
+    color: #666;
+    outline: none;
+    height: 23px;
+    width: 275px;
 }
