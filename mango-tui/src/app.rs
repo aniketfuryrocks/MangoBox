@@ -9,8 +9,8 @@ use std::{
 };
 use tui::{backend::CrosstermBackend, Terminal};
 
-use crate::layouts;
 
+use crate::layouts;
 pub type AppBackend = CrosstermBackend<Stdout>;
 
 #[derive(Default)]

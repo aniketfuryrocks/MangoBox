@@ -9,3 +9,5 @@ edition = "2021"
 anyhow = "1.0.65"
 crossterm = "0.25.0"
 tui = "0.19.0"
+mango-api={path = "../mango-api"}
+tokio = { version = "1", features = ["full",] }
