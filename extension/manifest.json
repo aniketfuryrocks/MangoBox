@@ -1,21 +1,21 @@
 {
-    "name": "Mango Chatbox",
-    "description": "Chat with other Mango User",
-    "version": "1.0",
-    "manifest_version": 3,
-    "background": {
-        "service_worker": "background.js"
-    },
-    "permissions": [
-        "tabs"
-    ],
-    "options_page": "options.html",
-    "action": {
-        "default_popup": "popup.html"
-    },
-    "icons": {
-        "16": "images/mango.png",
-        "32": "images/mango.png",
-        "48": "images/mango.png"
-    }
+  "name": "Mango Chatbox",
+  "description": "Chat with other Mango User",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "tabs"
+  ],
+  "options_page": "options.html",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "images/mango.png",
+    "32": "images/mango.png",
+    "48": "images/mango.png"
+  }
 }
