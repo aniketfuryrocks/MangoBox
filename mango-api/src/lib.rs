@@ -1,5 +1,16 @@
 use reqwest::Client;
+use serde::Deserialize;
 use serde_json::{json, Value};
+
+#[derive(Debug,Deserialize)]
+#[allow(dead_code)]
+pub struct User{
+    profile_image_url:Option<String>,
+    profile_name:Option<String>,
+    trader_category:Option<String>,
+    wallet_pk:Option<String>,
+}
+
 
 pub async fn fetch_price() -> Value {
     let url = "https://all-market-stats-api.onrender.com/markets/".to_string();
@@ -12,7 +23,7 @@ pub async fn fetch_price() -> Value {
 
 //https://mango-transaction-log.herokuapp.com/v3/user-data/profile-details
 // 5SKRvHAuiARiMYJtkXYuWy1kVTEJWbEAhnVN3MHxKzan
-pub async fn fetch_userdata(wallet_pk: String) -> Value {
+pub async fn fetch_userdata(wallet_pk: String) -> User {
     let url =
         "https://mango-transaction-log.herokuapp.com/v3/user-data/profile-details".to_string();
     let params = [("wallet-pk", wallet_pk)];
@@ -26,7 +37,7 @@ pub async fn fetch_userdata(wallet_pk: String) -> Value {
         .text()
         .await
         .unwrap_or_else(|_| json!({"wallet_pk":"null"}).to_string()); //handling the theoretical possibility of a non existent wallet
-    let p: Value = serde_json::from_str(response.as_str()).unwrap();
+    let p: User = serde_json::from_str(response.as_str()).unwrap();
     p
 }
 
