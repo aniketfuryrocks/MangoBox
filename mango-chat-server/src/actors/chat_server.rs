@@ -102,12 +102,13 @@ impl Handler<JoinRoom> for ChatServer {
         _ctx: &mut Self::Context,
     ) -> Self::Result {
         self.leave_room(session.clone());
-        log::info!("joining rooms");
 
         if let Some(sessions) = self.rooms.get_mut(&room) {
+            log::info!("joining room {}", room);
             sessions.insert(session);
             self.send_message(&room, "Someone Connected", None)
         } else {
+            log::error!("room {} doesn't exist", room);
             self.sessions.get_mut(&session).unwrap().do_send(Message {
                 wallet_pk: None,
                 msg: "The room doesn't exist".to_owned(),

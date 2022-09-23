@@ -90,7 +90,7 @@ impl StreamHandler<Result<ws::Message, ws::ProtocolError>> for WsChatSession {
             Ok(ws::Message::Text(text)) => {
                 match serde_json::from_str::<WsMessage>(&text) {
                     Ok(ws_message) => ctx.notify(ws_message),
-                    Err(err) => ctx.text(WsMessage::err(&err.to_string()).to_string()),
+                    Err(err) => ctx.text(WsMessage::err(err.to_string()).to_string()),
                 };
             }
             Ok(ws::Message::Binary(bin)) => ctx.binary(bin),
@@ -110,7 +110,7 @@ impl Handler<WsMessage> for WsChatSession {
         log::info!("{}", msg.to_string());
         let data = msg.data.to_string();
         match msg.ty {
-            MessageType::Join => self.join(data, ctx),
+            MessageType::Join => self.join(data),
             MessageType::Msg => self.msg(serde_json::Value::String(data), ctx),
             MessageType::Leave => self.leave(ctx),
             _ => ctx.text(msg.to_string()),
@@ -136,21 +136,18 @@ impl WsChatSession {
         };
 
         self.chat_server.do_send(ClientMessage {
-            room: room.clone(),
+            room,
             session: self.id.clone(),
             msg: data.to_string(),
         });
-        self.room = Some(room);
-        ctx.text(WsMessage::info("Room Joined").to_string());
     }
 
-    fn join(&mut self, room_id: RoomId, ctx: &mut WebsocketContext<Self>) {
+    fn join(&mut self, room_id: RoomId) {
         self.chat_server.do_send(JoinRoom {
             room: room_id.clone(),
             session: self.id.clone(),
         });
         self.room = Some(room_id);
-        ctx.text(WsMessage::info("Room Joined").to_string());
     }
 
     fn leave(&mut self, ctx: &mut WebsocketContext<Self>) {

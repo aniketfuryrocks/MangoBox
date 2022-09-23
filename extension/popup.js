@@ -3,9 +3,8 @@ var button = document.getElementById("btn1");
 var text = document.getElementById("demo");
 
 chrome.storage.sync.get(['key'], function(result) {
-    if (result.key === "omkar") {
+    if (result.key) {
         store = 1;
-
         window.location.href = "chat.html";
     }
 });
@@ -13,7 +12,7 @@ chrome.storage.sync.get(['key'], function(result) {
 if (store == 0) {
     button.addEventListener("click", function() {
         let inputVal = document.getElementById("input").value;
-        if (inputVal === "omkar") {
+        if (inputVal) {
             text.style.display = "none";
 
             chrome.storage.sync.set({ key: inputVal }, function() {

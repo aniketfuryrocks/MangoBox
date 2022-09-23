@@ -1,32 +1,32 @@
 use actix::Message as ActixMessage;
 use serde::{Deserialize, Serialize};
-use serde_json::{json, Value};
 
 #[derive(Serialize, Deserialize, ActixMessage)]
 #[rtype(result = "()")]
 pub struct WsMessage {
     pub ty: MessageType,
-    pub data: Value,
+    pub data: String,
 }
 
 impl WsMessage {
-    pub fn msg(msg: &str) -> Self {
+    pub fn msg<T: ToString>(data: T) -> Self {
         WsMessage {
             ty: MessageType::Msg,
-            data: json!(msg),
-        }
-    }
-    pub fn err(msg: &str) -> Self {
-        WsMessage {
-            ty: MessageType::Err,
-            data: json!(msg),
+            data: data.to_string(),
         }
     }
 
-    pub fn info(msg: &str) -> Self {
+    pub fn err<T: ToString>(data: T) -> Self {
+        WsMessage {
+            ty: MessageType::Err,
+            data: data.to_string(),
+        }
+    }
+
+    pub fn info<T: ToString>(data: T) -> Self {
         WsMessage {
             ty: MessageType::Info,
-            data: json!(msg),
+            data: data.to_string(),
         }
     }
 }

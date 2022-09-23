@@ -9,15 +9,43 @@ const socket = connect_to_server();
 chat_input_send_bt.addEventListener('click', _ => {
     const chat_msg = chat_input_box.value;
 
+    socket.send(JSON.stringify({
+        ty: "Msg",
+        data: chat_msg // room
+    }));
 
-    console.log(chat_msg);
+    add_my_msg(chat_msg);
 
     chat_input_box.value = "";
 });
 
+function add_my_msg(msg) {
+    const msg_el = document.createElement('div');
+    msg_el.classList.add('my-chat');
+    msg_el.innerText = msg;
+    chats.appendChild(msg_el);
+}
+
+function add_client_msg(msg) {
+    const msg_el = document.createElement('div');
+    msg_el.classList.add('client-chat');
+    msg_el.innerText = msg;
+    chats.appendChild(msg_el);
+}
+
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
 // initiate connection and listen to events
 function connect_to_server() {
-    const socket = new WebSocket('ws://0.0.0.0:8080/chat');
+    const socket = new WebSocket(`ws://0.0.0.0:8080/chat?q=${makeid(5)}`);
 
     socket.addEventListener('open', _ => {
         console.log("Mango > Connected To Server");
@@ -25,7 +53,7 @@ function connect_to_server() {
         // join room general
         socket.send(JSON.stringify({
             ty: "Join",
-            data: "generaasdfl" // room
+            data: "general" // room
         }));
 
         disable_input(false);
@@ -38,9 +66,19 @@ function connect_to_server() {
     });
 
     socket.addEventListener('message', event => {
-        const data = JSON.parse(event.data);
-        if (data.event === "FileChange")
-            location.reload()
+        const { ty, data } = JSON.parse(event.data);
+
+        switch (ty) {
+            case 'Msg':
+                add_client_msg(data);
+                break;
+            case 'Err':
+                alert(data);
+                break;
+            case 'Info':
+                alert(data);
+                break;
+        }
         console.log('Mango > Message from server ', data);
     });
 
