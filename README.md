@@ -29,7 +29,8 @@ A tui client which shows the prices of various cryptocurrencies in realtime  rig
 
 # Key Features 🔑
 
-- Allows the traders to communicate about their trade 
+### MangoChat
+- Allows traders to communicate about their trade 
 
 *WIP*
 
@@ -37,6 +38,9 @@ A tui client which shows the prices of various cryptocurrencies in realtime  rig
 - Access rooms from the UI
 - Spam Protection
 - Health Bot
+
+### MangoTui
+- Allows traders to view crypto prices in realtime right from their terminal
 
 # Technologies Used 🤵
 - [Mango Markets](https://github.com/blockworks-foundation/mango-v3)
