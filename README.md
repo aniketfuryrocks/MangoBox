@@ -55,8 +55,7 @@ $ git clone https://github.com/aniketfuryrocks/MangoBox.git
 # Go into the repository
 $ cd MangoBox
 
-- Add the Extension in your browser
-
+# Add the Extension in your browser
 - Go to More Tools and then choose Extensions from the browser menu.
 - Enable the Developer mode here.
 - click the Load unpacked button then select the Extension folder
