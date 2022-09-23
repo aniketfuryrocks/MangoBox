@@ -3,12 +3,41 @@ use serde::Deserialize;
 use serde_json::{json, Value};
 
 #[derive(Debug,Deserialize)]
-#[allow(dead_code)]
-pub struct User{
+pub struct UserunChecked{
     profile_image_url:Option<String>,
     profile_name:Option<String>,
     trader_category:Option<String>,
     wallet_pk:Option<String>,
+}
+#[allow(dead_code)]
+#[derive(Debug,Deserialize)]
+#[serde(try_from="UserunChecked")]
+pub struct User{
+    profile_image_url:Option<String>,
+    profile_name:Option<String>,
+    trader_category:Option<String>,
+   
+    wallet_pk:Option<String>,
+}
+
+impl User{
+    fn new(profile_image_url:Option<String>,profile_name:Option<String>,trader_category:Option<String>,wallet_pk:Option<String>)->Result<User,String>{
+       if wallet_pk.clone().unwrap().len()<50{
+        return Ok(User { profile_image_url, profile_name, trader_category, wallet_pk});
+       }
+       Err(format!("{}","Invalid wallet pk"))
+    }
+}
+
+impl TryFrom<UserunChecked> for User{
+    type Error=String;
+    
+    fn try_from(value: UserunChecked) -> Result<Self, Self::Error> {
+       
+           Self::new(value.profile_image_url, value.profile_name, value.trader_category, value.wallet_pk)
+       
+        
+    }
 }
 
 
@@ -36,7 +65,8 @@ pub async fn fetch_userdata(wallet_pk: String) -> User {
         .unwrap()
         .text()
         .await
-        .unwrap_or_else(|_| json!({"wallet_pk":"null"}).to_string()); //handling the theoretical possibility of a non existent wallet
+        .unwrap();
+        //.unwrap_or("{\"wallet_pk\":\"null\"}".to_string()); //handling the theoretical possibility of a non existent wallet
     let p: User = serde_json::from_str(response.as_str()).unwrap();
     p
 }
