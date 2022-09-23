@@ -1,7 +1,6 @@
 use super::session::Message;
 use crate::models::{RoomId, SessionId};
 use actix::{Message as ActixMessage, Recipient};
-use uuid::Uuid;
 
 #[derive(ActixMessage)]
 #[rtype(result = "()")]
@@ -11,11 +10,6 @@ pub struct ClientMessage {
     pub msg: String,
 }
 
-#[derive(ActixMessage)]
-#[rtype(result = "Uuid")]
-pub struct CreateRoom {
-    pub session: SessionId,
-}
 #[derive(ActixMessage)]
 #[rtype(result = "()")]
 pub struct JoinRoom {

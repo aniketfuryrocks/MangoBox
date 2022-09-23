@@ -23,7 +23,7 @@
             </div>
 
             <!-- main chat section -->
-            <div class="chats">
+            <div class="chats" id="chats">
                 <div class="client-chat">Hi!</div>
                 <div class="my-chat">Hi!</div>
                 <div class="client-chat">How can i help you?</div>
@@ -33,8 +33,8 @@
 
             <!-- input field section -->
             <div class="chat-input">
-                <input type="text" placeholder="Enter Message" />
-                <button class="send-btn">
+                <input type="text" id="chat-input-box" placeholder="Enter Message" />
+                <button class="send-btn" id="chat-input-send-bt" >
                     <img src="images/send.png" alt="send-btn">
                 </button>
             </div>
@@ -44,8 +44,7 @@
 
     </div>
 
-
-
+    <script src="chat.js"></script>
 </body>
 
 </html>
