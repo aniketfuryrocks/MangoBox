@@ -53,12 +53,12 @@ $ cd MangoBox
 
 # Add the Extension in your browser
 
-- Go to More Tools and then choose Extensions from the browser menu.
-- Enable the Developer mode here.
-- click the Load unpacked button then select the Extension folder
+# Go to More Tools and then choose Extensions from the browser menu.
+# Enable the Developer mode here.
+# click the Load unpacked button then select the Extension folder
 
 # run chat-server
-$ cargo run
+$ make server
 
 ```
 ### MangoTui:
@@ -69,11 +69,8 @@ $ git clone https://github.com/aniketfuryrocks/mlh-orientation-hackathon-fall-20
 # Go into the repository
 $ cd mlh-orientation-hackathon-fall-2022
 
-# Switch to the tui branch
-$ git checkout tui
-
 # run tui client
-$ cargo run --bin mango-tui
+$ make tui
 
 ```
 
