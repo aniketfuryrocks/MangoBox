@@ -68,10 +68,10 @@ $ make server
 ### MangoTui:
 ```bash
 # Clone this repository
-$ git clone https://github.com/aniketfuryrocks/mlh-orientation-hackathon-fall-2022.git
+$ git clone https://github.com/aniketfuryrocks/MangoBox.git
 
 # Go into the repository
-$ cd mlh-orientation-hackathon-fall-2022
+$ MangoBox
 
 # run tui client
 $ make tui
