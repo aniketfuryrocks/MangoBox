@@ -52,6 +52,14 @@ $ cargo run
 
 ```
 
+
+## Meet Our Team 22.FAL.5 🙋🏻
+
+<a href="https://github.com/aniketfuryrocks/mlh-orientation-hackathon-fall-2022/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=aniketfuryrocks/mlh-orientation-hackathon-fall-2022" />
+</a>
+
 ## License & Copyright
 
 Licensed under the **[MIT LICENSE](LICENSE)**
+
