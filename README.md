@@ -10,11 +10,11 @@
 
 
 <p align="center">
-  <a href="#Inspiration">Inspiration</a> •
-  <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#Technologies Used ">Technologies Used </a> •
-  <a href="#license">License</a>
+  <a href="#inspiration-">Inspiration</a> •
+  <a href="#key-features-">Key Features</a> •
+  <a href="#how-to-use-">How To Use</a> •
+  <a href="#technologies-used-">Technologies Used </a> •
+  <a href="#license--copyright">License</a>
 </p>
 
 
