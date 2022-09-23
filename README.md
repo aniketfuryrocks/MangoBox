@@ -34,11 +34,11 @@ To create a chat room for mango users as mentioned in the
 # Technologies Used 🤵
 
 
-- [Mango Markets](https://github.com/blockworks-foundation/mango-v3)
-- [Rust](https://expo.dev/)
-- [Browser Extension](https://developer.chrome.com/docs/extensions/)
-
-- [chat-rooms-actix](https://github.com/JasterV/chat-rooms-actix)
+- [Mango Markets](https://github.com/blockworks-foundation/mango-v3) : Mango Markets is a decentralized derivatives exchange built on the Solana blockchain.
+- [Rust](https://www.rust-lang.org/) :
+- [Browser Extension](https://developer.chrome.com/docs/extensions/) :
+- [HTML](https://en.wikipedia.org/wiki/HTML), [CSS](https://en.wikipedia.org/wiki/CSS), [Javascript](https://developer.mozilla.org/en-US/docs/Web/javascript) :
+- [chat-rooms-actix](https://github.com/JasterV/chat-rooms-actix) :
 
 
 # How To Use ⚙
