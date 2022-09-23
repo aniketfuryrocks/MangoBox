@@ -14,9 +14,9 @@
   <a href="#key-features-">Key Features</a> •
   <a href="#how-to-use-">How To Use</a> •
   <a href="#technologies-used-">Technologies Used </a> •
-  <a href="#license--copyright">License</a>
+  <a href="#license--copyright">License</a> •
+  <a href="https://www.youtube.com/watch?v=I1sbMoO2CKQ">Demo</a>
 </p>
-
 
 # Inspiration ☝
 
@@ -55,16 +55,17 @@ $ git clone https://github.com/aniketfuryrocks/MangoBox.git
 # Go into the repository
 $ cd MangoBox
 
-# Add the Extension in your browser
+- Add the Extension in your browser
 
-# Go to More Tools and then choose Extensions from the browser menu.
-# Enable the Developer mode here.
-# click the Load unpacked button then select the Extension folder
+- Go to More Tools and then choose Extensions from the browser menu.
+- Enable the Developer mode here.
+- click the Load unpacked button then select the Extension folder
 
 # run chat-server
 $ make server
 
 ```
+
 ### MangoTui:
 ```bash
 # Clone this repository
