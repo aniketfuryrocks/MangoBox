@@ -1,5 +1,6 @@
 [workspace]
 members = [
+    "mango-tui",
     "mango-api",
     "mango-chat-server",
 ]
