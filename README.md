@@ -6,11 +6,11 @@
   <br>
 </h1>
 
-<h4 align="center">A set of utilities to make the lives of mango market users easier</h4>
+<h4 align="center">A set of utilities to make the lives of Mango Market users easier</h4>
 
 
 <p align="center">
-  <a href="#key-features">Inspiration</a> •
+  <a href="#Inspiration">Inspiration</a> •
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
   <a href="#Technologies Used ">Technologies Used </a> •
@@ -21,8 +21,7 @@
 # Inspiration ☝
 
 ### MangoChat:
-A chat room for mango market users based on this [backlog](https://trello.com/c/n2HgLkvt/102-%F0%9F%91%B9-trollbox) on the mango markets community trello board.
-It helps the users of mango markets to connect with each other and more over provides a sand-boxed experience in the form of a browser extension to that the core user experience of mango markets is not disturbed.
+A chat room for mango market users based on this [backlog](https://trello.com/c/n2HgLkvt/102-%F0%9F%91%B9-trollbox) on the mango markets community trello board with whom we will be working during the fellowship. It helps the users of mango markets to connect with each other and more over provides a sand-boxed experience in the form of a browser extension to that the core user experience of mango markets is not disturbed.
 
 ### MangoTui:
 A tui client which shows the prices of various cryptocurrencies in realtime  right from the user's own terminal.
@@ -38,7 +37,7 @@ A tui client which shows the prices of various cryptocurrencies in realtime  rig
 
 # Technologies Used 🤵
 - [Mango Markets](https://github.com/blockworks-foundation/mango-v3)
-- [Rust](https://www.rust-lang.org/)
+- [Rust](https://www.rust-lang.org/) 
 - [Browser Extension](https://developer.chrome.com/docs/extensions/)
 - [tui-rs](https://github.com/fdehau/tui-rs)
 
@@ -47,10 +46,16 @@ A tui client which shows the prices of various cryptocurrencies in realtime  rig
 ### MangoChat:
 ```bash
 # Clone this repository
-$ git clone https://github.com/aniketfuryrocks/mlh-orientation-hackathon-fall-2022.git
+$ git clone https://github.com/aniketfuryrocks/MangoBox.git
 
 # Go into the repository
-$ cd mlh-orientation-hackathon-fall-2022
+$ cd MangoBox
+
+# Add the Extension in your browser
+
+- Go to More Tools and then choose Extensions from the browser menu.
+- Enable the Developer mode here.
+- click the Load unpacked button then select the Extension folder
 
 # run chat-server
 $ cargo run
