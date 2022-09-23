@@ -2,16 +2,15 @@ use reqwest::Client;
 use serde::Deserialize;
 use serde_json::{json, Value};
 
-#[derive(Debug,Deserialize)]
-pub struct UserunChecked{
-    profile_image_url:Option<String>,
-    profile_name:Option<String>,
-    trader_category:Option<String>,
-    wallet_pk:Option<String>,
-}
+//#[derive(Debug,Deserialize)]
+//pub struct UserunChecked{
+//    profile_image_url:Option<String>,
+//    profile_name:Option<String>,
+//    trader_category:Option<String>,
+//    wallet_pk:Option<String>,
+//}
 #[allow(dead_code)]
 #[derive(Debug,Deserialize)]
-#[serde(try_from="UserunChecked")]
 pub struct User{
     profile_image_url:Option<String>,
     profile_name:Option<String>,
@@ -20,26 +19,22 @@ pub struct User{
     wallet_pk:Option<String>,
 }
 
-impl User{
-    fn new(profile_image_url:Option<String>,profile_name:Option<String>,trader_category:Option<String>,wallet_pk:Option<String>)->Result<User,String>{
-       if wallet_pk.clone().unwrap().len()<50{
-        return Ok(User { profile_image_url, profile_name, trader_category, wallet_pk});
-       }
-       Err(format!("{}","Invalid wallet pk"))
-    }
-}
 
-impl TryFrom<UserunChecked> for User{
-    type Error=String;
-    
-    fn try_from(value: UserunChecked) -> Result<Self, Self::Error> {
-       
-           Self::new(value.profile_image_url, value.profile_name, value.trader_category, value.wallet_pk)
-       
-        
-    }
-}
 
+
+//impl TryFrom<String> for User{
+//    type Error=bool;
+//    
+//    fn try_from(value: String) -> Result<Self, Self::Error> {
+//       User::is_valid(value) 
+//    }
+//}
+pub fn is_valid(wallet_pk: String)->bool{
+    if wallet_pk.len()<=30{
+        return true
+    }
+    false
+}
 
 pub async fn fetch_price() -> Value {
     let url = "https://all-market-stats-api.onrender.com/markets/".to_string();
