@@ -87,7 +87,12 @@ impl StreamHandler<Result<ws::Message, ws::ProtocolError>> for WsChatSession {
                 ctx.pong(&msg);
             }
             Ok(ws::Message::Pong(_)) => self.hb = Instant::now(),
-            Ok(ws::Message::Text(text)) => ctx.text(text),
+            Ok(ws::Message::Text(text)) => {
+                match serde_json::from_str::<WsMessage>(&text) {
+                    Ok(ws_message) => ctx.notify(ws_message),
+                    Err(err) => ctx.text(WsMessage::err(&err.to_string()).to_string()),
+                };
+            }
             Ok(ws::Message::Binary(bin)) => ctx.binary(bin),
             Ok(ws::Message::Close(reason)) => {
                 ctx.close(reason);
@@ -102,6 +107,7 @@ impl Handler<WsMessage> for WsChatSession {
     type Result = ();
 
     fn handle(&mut self, msg: WsMessage, ctx: &mut Self::Context) -> Self::Result {
+        log::info!("{}", msg.to_string());
         let data = msg.data.to_string();
         match msg.ty {
             MessageType::Join => self.join(data, ctx),

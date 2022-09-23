@@ -15,9 +15,13 @@ pub struct ChatServer {
 
 impl ChatServer {
     pub fn new() -> Self {
+        let mut rooms = HashMap::new();
+
+        rooms.insert("general".to_string(), HashSet::new());
+
         ChatServer {
             sessions: HashMap::new(),
-            rooms: HashMap::new(),
+            rooms,
         }
     }
 
@@ -98,6 +102,7 @@ impl Handler<JoinRoom> for ChatServer {
         _ctx: &mut Self::Context,
     ) -> Self::Result {
         self.leave_room(session.clone());
+        log::info!("joining rooms");
 
         if let Some(sessions) = self.rooms.get_mut(&room) {
             sessions.insert(session);
