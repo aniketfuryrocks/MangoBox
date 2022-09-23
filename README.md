@@ -81,6 +81,11 @@ $ cargo run --bin mango-tui
 - Spam Protection
 - Health Bot
 
+### MangoTui:
+
+- Setting user alerts for Cryto rates.
+- Add more Stats like Borrow, Deposite rates from Mango Market platform
+
 
 
 # Meet Our Team 22.FAL.5 🙋🏻
