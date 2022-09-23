@@ -29,6 +29,13 @@ To create a chat room for mango users as mentioned in the
 
 - Allows the traders to communicate about their trade 
 
+*WIP*
+
+- Authenticate with Mango Account
+- Access rooms from the UI
+- Spam Protection
+- Helth Bot
+
 # Technologies Used 🤵
 
 - [Mango Markets](https://github.com/blockworks-foundation/mango-v3)
