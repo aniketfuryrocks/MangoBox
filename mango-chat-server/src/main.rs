@@ -23,7 +23,11 @@ pub const SERVER_ADDR: &str = "0.0.0.0:8080";
 async fn web_socket_route(req: HttpRequest, stream: web::Payload) -> Result<HttpResponse, Error> {
     let state: &AppState = req.app_data().unwrap();
     log::info!("connection requested /chat");
-    let wallet_pk = req.query_string().split_once('=').expect("no wallet_pk provided q={wallet_pk}").1;
+    let wallet_pk = req
+        .query_string()
+        .split_once('=')
+        .expect("no wallet_pk provided q={wallet_pk}")
+        .1;
     log::info!("wallet_pk {}", wallet_pk);
     ws::start(
         WsChatSession::new(state.chat.clone(), wallet_pk.to_string()),

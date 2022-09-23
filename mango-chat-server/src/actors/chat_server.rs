@@ -25,7 +25,13 @@ impl ChatServer {
         }
     }
 
-    pub fn send_message(&self, room: &RoomId, message: &str, wallet_pk: Option<&SessionId>, skip: Option<&SessionId>) {
+    pub fn send_message(
+        &self,
+        room: &RoomId,
+        message: &str,
+        wallet_pk: Option<&SessionId>,
+        skip: Option<&SessionId>,
+    ) {
         let sessions = match self.rooms.get(room) {
             Some(it) => it,
             _ => return,
