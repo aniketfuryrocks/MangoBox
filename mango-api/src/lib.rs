@@ -10,28 +10,25 @@ use serde_json::{json, Value};
 //    wallet_pk:Option<String>,
 //}
 #[allow(dead_code)]
-#[derive(Debug,Deserialize)]
-pub struct User{
-    profile_image_url:Option<String>,
-    profile_name:Option<String>,
-    trader_category:Option<String>,
-   
-    wallet_pk:Option<String>,
+#[derive(Debug, Deserialize)]
+pub struct User {
+    profile_image_url: Option<String>,
+    profile_name: Option<String>,
+    trader_category: Option<String>,
+
+    wallet_pk: Option<String>,
 }
-
-
-
 
 //impl TryFrom<String> for User{
 //    type Error=bool;
-//    
+//
 //    fn try_from(value: String) -> Result<Self, Self::Error> {
-//       User::is_valid(value) 
+//       User::is_valid(value)
 //    }
 //}
-pub fn is_valid(wallet_pk: String)->bool{
-    if wallet_pk.len()<=30{
-        return true
+pub fn is_valid(wallet_pk: String) -> bool {
+    if wallet_pk.len() <= 30 {
+        return true;
     }
     false
 }
@@ -53,15 +50,8 @@ pub async fn fetch_userdata(wallet_pk: String) -> User {
     let params = [("wallet-pk", wallet_pk)];
     let url = reqwest::Url::parse_with_params(&url, params.iter()).unwrap();
     let client = Client::new();
-    let response = client
-        .get(url)
-        .send()
-        .await
-        .unwrap()
-        .text()
-        .await
-        .unwrap();
-        //.unwrap_or("{\"wallet_pk\":\"null\"}".to_string()); //handling the theoretical possibility of a non existent wallet
+    let response = client.get(url).send().await.unwrap().text().await.unwrap();
+    //.unwrap_or("{\"wallet_pk\":\"null\"}".to_string()); //handling the theoretical possibility of a non existent wallet
     let p: User = serde_json::from_str(response.as_str()).unwrap();
     p
 }
