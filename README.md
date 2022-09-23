@@ -44,7 +44,8 @@ A tui client which shows the prices of various cryptocurrencies in realtime  rig
 # How To Use ⚙
 
 > Prerequisites 
-> - [rust](https://www.rust-lang.org/tools/install) installed
+> - [rust](https://www.rust-lang.org/tools/install)
+> - [Manifest v3 Supported Browser](https://extensionworkshop.com/documentation/develop/manifest-v3-migration-guide/)
 
 ### MangoChat:
 ```bash
