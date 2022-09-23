@@ -4,8 +4,8 @@ var text = document.getElementById("demo");
 chrome.storage.sync.get(['key'], function (result) {
     if (result.key === "omkar") {
         store = 1;
-        window.close();
-        chrome.tabs.update({ url: "https://www.youtube.com" });
+
+        window.location.href = "chat.html";
     }
 });
 
@@ -19,8 +19,7 @@ if (store == 0) {
                 console.log('Value is set to ' + value);
             });
 
-            chrome.tabs.update({ url: "https://www.youtube.com" });
-            window.close();
+            window.location.href = "chat.html";
         } else {
             toggleText();
         }
