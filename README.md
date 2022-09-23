@@ -30,14 +30,8 @@ A tui client which shows the prices of various cryptocurrencies in realtime  rig
 # Key Features 🔑
 
 ### MangoChat
-- Allows traders to communicate about their trade 
-
-*WIP*
-
-- Authenticate with Mango Account
-- Access rooms from the UI
-- Spam Protection
-- Health Bot
+- Allows traders to communicate about their trade.
+- It has minimal interface and can extend to a web page but main focus is to provide good chat functionality with less overhead.
 
 ### MangoTui
 - Allows traders to view crypto prices in realtime right from their terminal
@@ -78,14 +72,24 @@ $ cargo run --bin mango-tui
 
 ```
 
+# Future Goal ⌛
 
-## Meet Our Team 22.FAL.5 🙋🏻
+### MangoChat:
+
+- Authenticate with Mango Account
+- Access rooms from the UI
+- Spam Protection
+- Health Bot
+
+
+
+# Meet Our Team 22.FAL.5 🙋🏻
 
 <a href="https://github.com/aniketfuryrocks/mlh-orientation-hackathon-fall-2022/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=aniketfuryrocks/mlh-orientation-hackathon-fall-2022" />
 </a>
 
-## License & Copyright
+# License & Copyright
 
 Licensed under the **[MIT LICENSE](LICENSE)**
 
