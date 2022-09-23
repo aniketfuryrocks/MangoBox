@@ -3,6 +3,13 @@ name = "mango-chat-server"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+actix = "0.13.0"
+actix-web = "4"
+actix-web-actors = "4.1.0"
+uuid = { version = "1.1", features = ["serde", "v4"] }
+derive_more = "0.99.17"
+serde_json = "1.0.85"
+serde = "1.0.145"
+env_logger = "0.9.1"
+rand = "0.8.5"
