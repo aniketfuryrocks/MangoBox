@@ -2,38 +2,19 @@ use reqwest::Client;
 use serde::Deserialize;
 use serde_json::Value;
 
-//#[derive(Debug,Deserialize)]
-//pub struct UserunChecked{
-//    profile_image_url:Option<String>,
-//    profile_name:Option<String>,
-//    trader_category:Option<String>,
-//    wallet_pk:Option<String>,
-//}
-#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 pub struct User {
-    profile_image_url: Option<String>,
-    profile_name: Option<String>,
-    trader_category: Option<String>,
-
-    wallet_pk: Option<String>,
+    pub profile_image_url: Option<String>,
+    pub profile_name: Option<String>,
+    pub trader_category: Option<String>,
+    pub wallet_pk: Option<String>,
 }
 
-//impl TryFrom<String> for User{
-//    type Error=bool;
-//
-//    fn try_from(value: String) -> Result<Self, Self::Error> {
-//       User::is_valid(value)
-//    }
-//}
 pub fn is_valid(wallet_pk: String) -> bool {
-    if wallet_pk.len() <= 30 {
-        return true;
-    }
-    false
+    wallet_pk.len() <= 30
 }
 
-pub async fn fetch_price() -> Value {
+pub async fn fetch_price_async() -> Value {
     let url = "https://all-market-stats-api.onrender.com/markets/".to_string();
     let client = Client::new();
     let response = client.get(url).send().await.unwrap().text().await.unwrap();
@@ -51,7 +32,6 @@ pub async fn fetch_userdata(wallet_pk: String) -> User {
     let url = reqwest::Url::parse_with_params(&url, params.iter()).unwrap();
     let client = Client::new();
     let response = client.get(url).send().await.unwrap().text().await.unwrap();
-    //.unwrap_or("{\"wallet_pk\":\"null\"}".to_string()); //handling the theoretical possibility of a non existent wallet
     let p: User = serde_json::from_str(response.as_str()).unwrap();
     p
 }
@@ -62,6 +42,14 @@ pub async fn fetch_leaderboard() -> u16 {
     let res = c.get(url).send().await.unwrap();
     println!("{:?}", res);
     res.status().as_u16()
+}
+
+pub fn fetch_price_sync() -> Value {
+    let url = "https://all-market-stats-api.onrender.com/markets/".to_string();
+    let response = reqwest::blocking::get(url).unwrap().text().unwrap();
+
+    let p: Value = serde_json::from_str(response.as_str()).unwrap();
+    p
 }
 
 #[cfg(test)]
@@ -77,7 +65,6 @@ mod tests {
     async fn test_prices() {
         let x = fetch_price().await;
         println!("{:#?}", x);
-        //assert_eq!(status, 200);
     }
 
     #[tokio::test]
@@ -85,6 +72,5 @@ mod tests {
         let wallet_pk = "5SKRvHAuiARiMYJtkXYuWy1kVTEJWbEAhnVN3MHxKzan".to_string();
         let x = fetch_userdata(wallet_pk).await;
         println!("{:#?}", x);
-        //assert_eq!(status, 200);
     }
 }
