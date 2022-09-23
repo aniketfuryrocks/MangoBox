@@ -31,7 +31,7 @@ A user-friendly TUI displaying real-time prices of various cryptocurrencies.
 
 ### MangoChat
 
-- Allows traders to communicate about their trade.
+- Allows traders to communicate about their trade in real time.
 - It has a minimal interface and can extend to a web page but the main focus is to provide good chat functionality with less overhead.
 
 ### MangoTui
@@ -44,6 +44,8 @@ A user-friendly TUI displaying real-time prices of various cryptocurrencies.
 - [Rust](https://www.rust-lang.org/)
 - [Browser Extension](https://developer.chrome.com/docs/extensions/)
 - [tui-rs](https://github.com/fdehau/tui-rs)
+- [Actix Chat rooms](https://github.com/JasterV/chat-rooms-actix)
+
 
 # How To Use ⚙
 
@@ -78,7 +80,7 @@ $ make server
 $ git clone https://github.com/aniketfuryrocks/MangoBox.git
 
 # Go into the repository
-$ MangoBox
+$ cd MangoBox
 
 # run tui client
 $ make tui
