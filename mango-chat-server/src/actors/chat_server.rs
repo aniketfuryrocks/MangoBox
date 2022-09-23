@@ -25,15 +25,20 @@ impl ChatServer {
         }
     }
 
-    pub fn send_message(&self, room: &RoomId, message: &str, wallet_pk: Option<SessionId>) {
+    pub fn send_message(&self, room: &RoomId, message: &str, wallet_pk: Option<&SessionId>, skip: Option<&SessionId>) {
         let sessions = match self.rooms.get(room) {
             Some(it) => it,
             _ => return,
         };
         sessions.iter().for_each(|id| {
+            if let Some(wallet_pk) = skip {
+                if id == wallet_pk {
+                    return;
+                }
+            }
             if let Some(addr) = self.sessions.get(id) {
                 addr.do_send(Message {
-                    wallet_pk: wallet_pk.clone(),
+                    wallet_pk: wallet_pk.cloned(),
                     msg: message.into(),
                 })
             }
@@ -89,7 +94,7 @@ impl Handler<ClientMessage> for ChatServer {
 
     fn handle(&mut self, msg: ClientMessage, _ctx: &mut Self::Context) -> Self::Result {
         let ClientMessage { session, room, msg } = msg;
-        self.send_message(&room, &msg, Some(session));
+        self.send_message(&room, &msg, Some(&session), Some(&session));
     }
 }
 
@@ -105,8 +110,8 @@ impl Handler<JoinRoom> for ChatServer {
 
         if let Some(sessions) = self.rooms.get_mut(&room) {
             log::info!("joining room {}", room);
-            sessions.insert(session);
-            self.send_message(&room, "Someone Connected", None)
+            sessions.insert(session.clone());
+            self.send_message(&room, "Someone Connected", None, Some(&session));
         } else {
             log::error!("room {} doesn't exist", room);
             self.sessions.get_mut(&session).unwrap().do_send(Message {

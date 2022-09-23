@@ -1,8 +1,9 @@
 const chats = document.getElementById("chats");
 const chat_input_box = document.getElementById("chat-input-box");
+const connection_status = document.getElementById("connection-status");
 const chat_input_send_bt = document.getElementById("chat-input-send-bt")
 
-disable_input(true);
+toggle_connection_status(true);
 
 // connect to server
 const socket = connect_to_server();
@@ -34,14 +35,14 @@ function add_client_msg(msg) {
 }
 
 function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
- charactersLength));
-   }
-   return result;
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() *
+            charactersLength));
+    }
+    return result;
 }
 // initiate connection and listen to events
 function connect_to_server() {
@@ -56,7 +57,7 @@ function connect_to_server() {
             data: "general" // room
         }));
 
-        disable_input(false);
+        toggle_connection_status(false);
     });
 
     socket.addEventListener('close', _ => {
@@ -89,7 +90,9 @@ function connect_to_server() {
     return socket;
 }
 
-function disable_input(disable) {
+function toggle_connection_status(disable) {
     chat_input_box.disable = disable;
     chat_input_send_bt.disable = disable;
+    connection_status.innerText = disable ? "Disconnected" : "Connected";
+    connection_status.style = disable ? "color: red" : "color: green";
 }
