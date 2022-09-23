@@ -34,7 +34,7 @@ To create a chat room for mango users as mentioned in the
 - Authenticate with Mango Account
 - Access rooms from the UI
 - Spam Protection
-- Helth Bot
+- Health Bot
 
 # Technologies Used 🤵
 
